@@ -20,12 +20,13 @@ public class DatabaseConfig {
 
 	@Bean
 	public DataSource dataSource() {
-		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		dataSource.setDriverClassName("org.postgresql.Driver");
-		dataSource.setUrl("jdbc:postgresql://localhost:5432/api_logs?createDatabaseIfNotExist=true");
-		dataSource.setUsername("postgres");
-		dataSource.setPassword("postgres");
-		return dataSource;
+		DriverManagerDataSource driverManagerDataSource = new DriverManagerDataSource();
+		
+		driverManagerDataSource.setDriverClassName("org.postgresql.Driver");
+		driverManagerDataSource.setUrl("jdbc:postgresql://localhost:5432/api_logs?createDatabaseIfNotExist=true");
+		driverManagerDataSource.setUsername("postgres");
+		driverManagerDataSource.setPassword("postgres");
+		return driverManagerDataSource;
 	}
 
 	@Bean
@@ -33,14 +34,13 @@ public class DatabaseConfig {
 		LocalContainerEntityManagerFactoryBean eMF = new LocalContainerEntityManagerFactoryBean();
 
 		eMF.setDataSource(dataSource());
-
 		eMF.setPackagesToScan("br.audora.log");
 
 		HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
 		eMF.setJpaVendorAdapter(vendorAdapter);
 
 		Properties properties = new Properties();
-		properties.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQL82Dialect");
+		properties.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
 		properties.put("hibernate.show_sql", true);
 		properties.put("hibernate.hbm2ddl.auto", "update");
 		eMF.setJpaProperties(properties);
