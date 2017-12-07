@@ -16,8 +16,7 @@ public enum Produto {
 				return true;
 			}
 		}
-
-		return false;
+		throw new RuntimeException("Valor não encontrado!");
 	}
 
 }
