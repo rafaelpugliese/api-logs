@@ -27,3 +27,8 @@ api/.mvn/
 # eclipse project file
 .settings/
 .project
+api/.classpath
+
+
+.DS_Store
+
