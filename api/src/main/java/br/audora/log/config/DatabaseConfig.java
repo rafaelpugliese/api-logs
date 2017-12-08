@@ -14,7 +14,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@EnableJpaRepositories("br.audora.log.repositorio")
+@EnableJpaRepositories("br.audora.log.repository")
 @EnableTransactionManagement
 public class DatabaseConfig {
 

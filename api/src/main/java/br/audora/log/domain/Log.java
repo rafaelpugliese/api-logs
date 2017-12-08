@@ -1,4 +1,4 @@
-package br.audora.log.dominio;
+package br.audora.log.domain;
 
 import java.util.Date;
 import java.util.Map;
@@ -13,7 +13,7 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import br.audora.log.conversor.RegistroConversor;
+import br.audora.log.converter.RegistroConverter;
 
 @Entity
 @Table(name = "log")
@@ -37,7 +37,7 @@ public class Log {
 	private String categoria;
 
 	@Column
-	@Convert(converter = RegistroConversor.class)
+	@Convert(converter = RegistroConverter.class)
 	private Map<String, Object> registros;
 
 	public Long getId() {

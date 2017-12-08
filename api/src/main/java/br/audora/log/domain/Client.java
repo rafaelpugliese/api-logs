@@ -1,6 +1,11 @@
-package br.audora.log.dominio;
+package br.audora.log.domain;
 
-public enum Cliente {
+import java.util.ArrayList;
+import java.util.List;
+
+import br.audora.log.exception.ParametersException;
+
+public enum Client {
 
 	ACRE("Acre"), 
 	ALAGOAS("Alagoas"), 
@@ -30,20 +35,27 @@ public enum Cliente {
 	SERGIPE("Sergipe"), 
 	TOCANTINS("Tocantins");
 
-	String descricao;
+	String description;
 
-	Cliente(String descricao) {
-		this.descricao = descricao;
+	Client(String description) {
+		this.description = description;
 	}
 
+	public static boolean isValid(String description) {
+		List<String> descriptions = new ArrayList<>();
 
-	public static boolean isValid(String cliente) {
-		for (Cliente p : values()) {
-			if (p.descricao.toLowerCase().contains(cliente.toLowerCase())) {
+		for (Client client : values()) {
+			descriptions.add(client.getDescription());
+			if (client.description.toLowerCase().contains(description.toLowerCase())) {
 				return true;
 			}
 		}
-		return false;
+		throw new ParametersException(
+				"Valor não encontrado! Possíveis valores para clientes são: " + descriptions.toString());
+	}
+
+	public String getDescription() {
+		return description;
 	}
 	
 }

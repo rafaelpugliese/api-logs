@@ -4,54 +4,38 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import br.audora.log.exception.ParametersException;
+
 public class Validator {
 
-	public static boolean isProdutoValido(String value) {
+	public static boolean isProductValid(String value) {
 		return value != null;
 	}
 
-	public static boolean isCategoriaValida(String value) {
+	public static boolean isCategoryValid(String value) {
 		return value != null;
 	}
 
-	public static boolean isClienteValido(String value) {
+	public static boolean isClientValid(String value) {
 		return value != null;
 	}
 
-	public static boolean isDataValida(String value) {
+	public static boolean isDateValid(String value) {
 		return value != null && validateDateFormat(value);
 	}
 
 	public static boolean validateDateFormat(String dateToValdate) {
-
-		//SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-		// To make strict date format validation
-		formatter.setLenient(false);
-		Date parsedDate = null;
-		try {
-			parsedDate = formatter.parse(dateToValdate);
-			System.out.println("++validated DATE TIME ++" + formatter.format(parsedDate));
-
-		} catch (ParseException e) {
-			return false;
-		}
-		return true;
+		return convert(dateToValdate) != null; 
 	}
 	
 	public static Date convert(String dateToValdate) {
-
-		//SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-		// To make strict date format validation
 		formatter.setLenient(false);
 		Date parsedDate = null;
 		try {
 			parsedDate = formatter.parse(dateToValdate);
-			System.out.println("++validated DATE TIME ++" + formatter.format(parsedDate));
-
 		} catch (ParseException e) {
-			return null;
+			throw new ParametersException("Data está com o formato inválido, formato esperado: "+ "yyyy-MM-dd");
 		}
 		return parsedDate;
 	}

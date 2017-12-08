@@ -1,24 +1,24 @@
-package br.audora.log.conversor;
+package br.audora.log.converter;
+
+import static br.audora.log.util.GsonApiLog.getGson;
 
 import java.util.HashMap;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
 
-import br.audora.log.util.GsonApiLog;
-
 @Converter(autoApply = true)
 @SuppressWarnings("rawtypes")
-public class RegistroConversor implements AttributeConverter<HashMap, String> {
+public class RegistroConverter implements AttributeConverter<HashMap, String> {
 
 	@Override
 	public String convertToDatabaseColumn(HashMap attribute) {
-		return GsonApiLog.getGson().toJson(attribute);
+		return getGson().toJson(attribute);
 	}
 
 	@Override
 	public HashMap convertToEntityAttribute(String dbData) {
-		return GsonApiLog.getGson().fromJson(dbData, HashMap.class);
+		return getGson().fromJson(dbData, HashMap.class);
 	}
 
 }
