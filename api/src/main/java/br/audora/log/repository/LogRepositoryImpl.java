@@ -26,8 +26,8 @@ public class LogRepositoryImpl extends SimpleJpaRepository<Log, Long> implements
 		Specification<Log> where = builder.byCategory(params.get("categoria"))
 				.byProduct(params.get("produto"))
 				.byClient(params.get("cliente"))
-				.byDataInicial(params.get("dataInicial"))
-				.byDataFinal(params.get("dataFinal"))
+				.byStartDate(params.get("dataInicial"))
+				.byFinalDate(params.get("dataFinal"))
 				.build();
 
 		return findAll(where);

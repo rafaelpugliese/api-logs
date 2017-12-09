@@ -1,4 +1,4 @@
-package br.audora.log.config;
+package br.audora.log.config.database;
 
 import java.util.Properties;
 

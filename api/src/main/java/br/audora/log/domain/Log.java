@@ -1,5 +1,7 @@
 package br.audora.log.domain;
 
+import static br.audora.log.util.Converter.FORMAT_DATE;
+
 import java.util.Date;
 import java.util.Map;
 
@@ -29,7 +31,8 @@ public class Log {
 	@Column
 	private String cliente;
 
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+	// time zone deve ser o mesmo do banco de dados.
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = FORMAT_DATE, timezone = "America/Maceio")
 	@Column
 	private Date dataHora;
 
