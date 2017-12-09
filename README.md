@@ -23,10 +23,13 @@ Após realizada a autenticação, o token de retorno deve ser utilizado nas dema
 | Campo | valor |
 | ------------- | ------------- |
 | Link | http://localhost:8080/logs |
-| Header | Content-Type: application/json <br> Authorization: token |
+| Header | Content-Type: application/json <br> Authorization: token\** |
 | Body* | { "produto":"OAB", "cliente":"Alagoas", "categoria":"permissão", "dataHora":"2017-12-16 08:40:10", "registros": { "usuario": {"nome": "José da silva", "idade": 55}, "descricao":"Descrição do usuário"}} |
 
-\* Dados enviados pelo campo ```raw```
+\* Dados enviados pelo campo ```raw```. O formato do json recebido pelo ```registro``` é genérico, portanto, qualquer json pode ser enviado neste campo.
+
+\** Exemplo de valor para o token: ```Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhdWRvcmEiLCJleHAiOjE1MTM2Nzg5NjR9.UGmbKijIkpeRMU03q4gh9lB6pqSFbvDMbUuAEi3HZuNNojYGZz-Q0Hw83ndR_1tLtV8GNwpXvtTYo8rAO5zzDQ```
+
 ### Resposta
 
 ```json
@@ -59,10 +62,10 @@ Após realizada a autenticação, o token de retorno deve ser utilizado nas dema
 
 | Campo | valor |
 |---------|---------|
-| Link** | http://localhost:8080/log/search?produto=OBA&cliente=Alagoas&categoria=permissão&dataInicial=2017-12-16 08:40:10&dataFinal=2017-12-16 08:40:10|
+| Link*** | http://localhost:8080/log/search?produto=OBA&cliente=Alagoas&categoria=permissão&dataInicial=2017-12-16%2008:40:10&dataFinal=2017-12-16%2008:40:10|
 | Header | Content-Type: application/json <br> Authorization: token |
 
-\** Todos os parâmetros/filtros são opcionais
+\*** Todos os parâmetros/filtros são opcionais
 
 ### Resposta
 
