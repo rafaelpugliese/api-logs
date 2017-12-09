@@ -1,5 +1,7 @@
 package br.audora.log.domain.enumerations;
 
+import static br.audora.log.util.Constants.Mensagem.VALUE_PRODUCT_NOT_FOUND;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,8 +26,7 @@ public enum Product {
 				return true;
 			}
 		}
-		throw new ParametersException(
-				"Valor não encontrado! Possíveis valores para produtos são: " + descriptions.toString());
+		throw new ParametersException(VALUE_PRODUCT_NOT_FOUND + descriptions.toString());
 	}
 
 	public String getDescription() {

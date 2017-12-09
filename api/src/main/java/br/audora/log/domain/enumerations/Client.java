@@ -1,5 +1,7 @@
 package br.audora.log.domain.enumerations;
 
+import static br.audora.log.util.Constants.Mensagem.VALUE_CLIENT_NOT_FOUND;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,8 +52,7 @@ public enum Client {
 				return true;
 			}
 		}
-		throw new ParametersException(
-				"Valor não encontrado! Possíveis valores para clientes são: " + descriptions.toString());
+		throw new ParametersException(VALUE_CLIENT_NOT_FOUND + descriptions.toString());
 	}
 
 	public String getDescription() {

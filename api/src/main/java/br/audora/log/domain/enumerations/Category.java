@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.audora.log.exception.ParametersException;
+import static br.audora.log.util.Constants.Mensagem.*;
 
 public enum Category {
 
@@ -24,8 +25,7 @@ public enum Category {
 				return true;
 			}
 		}
-		throw new ParametersException(
-				"Valor não encontrado! Possíveis valores para categorias são: " + descriptions.toString());
+		throw new ParametersException(VALUE_CATEGORY_NOT_FOUND + descriptions.toString());
 	}
 
 	public String getDescription() {

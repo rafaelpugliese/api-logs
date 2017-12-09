@@ -36,7 +36,7 @@ public class Log {
 	@JsonProperty("cliente")
 	private String client;
 
-	// time zone deve ser o mesmo do banco de dados.
+	// time zone deve ser o mesmo do banco de dados
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = FORMAT_DATE, timezone = TIME_ZONE_AMERICA_MACEIO)
 	@Column(name = "dataHora")
 	@JsonProperty("dataHora")
