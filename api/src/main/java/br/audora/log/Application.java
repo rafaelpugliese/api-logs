@@ -1,5 +1,7 @@
 package br.audora.log;
 
+import static br.audora.log.util.Constants.TIME_ZONE_AMERICA_MACEIO;
+
 import java.util.TimeZone;
 
 import javax.annotation.PostConstruct;
@@ -17,7 +19,7 @@ public class Application extends WebMvcConfigurerAdapter {
 
 	@PostConstruct
 	void started() {
-		TimeZone.setDefault(TimeZone.getTimeZone("America/Maceio")); 	// Time zone deve ser o mesmo do banco de dados.
+		TimeZone.setDefault(TimeZone.getTimeZone(TIME_ZONE_AMERICA_MACEIO)); 	// Time zone deve ser o mesmo do banco de dados.
 	}
 
 }

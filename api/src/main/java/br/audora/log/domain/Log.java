@@ -1,5 +1,7 @@
 package br.audora.log.domain;
 
+
+import static br.audora.log.util.Constants.TIME_ZONE_AMERICA_MACEIO;
 import static br.audora.log.util.Converter.FORMAT_DATE;
 
 import java.util.Date;
@@ -14,6 +16,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import br.audora.log.converter.RegistroConverter;
 
@@ -25,21 +28,26 @@ public class Log {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column
-	private String produto;
+	@Column(name = "produto")
+	@JsonProperty("produto")
+	private String product;
 
-	@Column
-	private String cliente;
+	@Column(name = "cliente")
+	@JsonProperty("cliente")
+	private String client;
 
 	// time zone deve ser o mesmo do banco de dados.
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = FORMAT_DATE, timezone = "America/Maceio")
-	@Column
-	private Date dataHora;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = FORMAT_DATE, timezone = TIME_ZONE_AMERICA_MACEIO)
+	@Column(name = "dataHora")
+	@JsonProperty("dataHora")
+	private Date dateHour;
 
-	@Column
-	private String categoria;
+	@Column(name = "categoria")
+	@JsonProperty("categoria")
+	private String category;
 
-	@Column
+	@Column(name = "registros")
+	@JsonProperty("registros")
 	@Convert(converter = RegistroConverter.class)
 	private Map<String, Object> registros;
 
@@ -51,36 +59,36 @@ public class Log {
 		this.id = id;
 	}
 
-	public String getProduto() {
-		return produto;
+	public String getProduct() {
+		return product;
 	}
 
-	public void setProduto(String produto) {
-		this.produto = produto;
+	public void setProduct(String product) {
+		this.product = product;
 	}
 
-	public String getCliente() {
-		return cliente;
+	public String getClient() {
+		return client;
 	}
 
-	public void setCliente(String cliente) {
-		this.cliente = cliente;
+	public void setClient(String client) {
+		this.client = client;
 	}
 
-	public Date getDataHora() {
-		return dataHora;
+	public Date getDateHour() {
+		return dateHour;
 	}
 
-	public void setDataHora(Date dataHora) {
-		this.dataHora = dataHora;
+	public void setDateHour(Date dateHour) {
+		this.dateHour = dateHour;
 	}
 
-	public String getCategoria() {
-		return categoria;
+	public String getCategory() {
+		return category;
 	}
 
-	public void setCategoria(String categoria) {
-		this.categoria = categoria;
+	public void setCategory(String category) {
+		this.category = category;
 	}
 
 	public Map<String, Object> getRegistros() {

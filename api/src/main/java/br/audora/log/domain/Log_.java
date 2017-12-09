@@ -11,10 +11,9 @@ import javax.persistence.metamodel.StaticMetamodel;
 public class Log_ {
 
 	public static volatile SingularAttribute<Log, Long> id;
-	public static volatile SingularAttribute<Log, String> produto;
-	public static volatile SingularAttribute<Log, String> cliente;
-	public static volatile SingularAttribute<Log, String> categoria;
-	public static volatile SingularAttribute<Log, Date> dataHora;
-	//public static volatile SetAttribute<Log, Map<String, Object>> registros;
+	public static volatile SingularAttribute<Log, String> product;
+	public static volatile SingularAttribute<Log, String> client;
+	public static volatile SingularAttribute<Log, String> category;
+	public static volatile SingularAttribute<Log, Date> dateHour;
 
 }

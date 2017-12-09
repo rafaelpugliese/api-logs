@@ -11,6 +11,7 @@ import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
 
 public class DateAdapterJson implements JsonDeserializer<Date>, JsonSerializer<Date> {
+	
 	@Override
 	public Date deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) {
 		return json == null ? null : new Date(json.getAsLong());

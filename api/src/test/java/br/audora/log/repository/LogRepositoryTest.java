@@ -9,8 +9,8 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import br.audora.log.domain.Category;
 import br.audora.log.domain.Log;
+import br.audora.log.domain.enumerations.Category;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
@@ -26,7 +26,7 @@ public class LogRepositoryTest {
 	public void testSaveWithCategory() {
 		// given
 		Log log = new Log();
-		log.setCategoria(Category.AUTENTICACAO.getDescription());
+		log.setCategory(Category.AUTENTICACAO.getDescription());
 		log = entityManager.persist(log);
 		entityManager.flush();
 
@@ -34,7 +34,7 @@ public class LogRepositoryTest {
 		Log found = logRepository.findOne(log.getId());
 
 		// then
-		assertEquals(found.getCategoria(), log.getCategoria());
+		assertEquals(found.getCategory(), log.getCategory());
 	}
 
 }

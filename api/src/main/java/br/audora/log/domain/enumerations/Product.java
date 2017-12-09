@@ -1,4 +1,4 @@
-package br.audora.log.domain;
+package br.audora.log.domain.enumerations;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -8,7 +8,7 @@ import com.google.gson.GsonBuilder;
 
 public class GsonApiLog {
 
-	public static Gson getGson() {
+	public static Gson gson() {
 		GsonBuilder gson = new GsonBuilder();
 		gson.registerTypeAdapter(Date.class, new DateAdapterJson());
 		return gson.create();

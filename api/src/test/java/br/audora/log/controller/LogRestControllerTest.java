@@ -21,8 +21,8 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-import br.audora.log.domain.Category;
 import br.audora.log.domain.Log;
+import br.audora.log.domain.enumerations.Category;
 import br.audora.log.service.LogService;
 
 @RunWith(SpringRunner.class)
@@ -39,7 +39,7 @@ public class LogRestControllerTest {
 	public void testSearchByCategoria() throws Exception {
 
 		Log log = new Log();
-		log.setCategoria(Category.AUTENTICACAO.getDescription());
+		log.setCategory(Category.AUTENTICACAO.getDescription());
 
 		List<Log> allLogs = Arrays.asList(log);
 		Map<String, String> params = new HashMap<>();
@@ -50,7 +50,7 @@ public class LogRestControllerTest {
 				.contentType(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk())
 				.andExpect(jsonPath("$", hasSize(1)))
-				.andExpect(jsonPath("$[0].categoria", is(log.getCategoria())));
+				.andExpect(jsonPath("$[0].categoria", is(log.getCategory())));
 	}
 
 }

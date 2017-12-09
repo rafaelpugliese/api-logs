@@ -15,11 +15,11 @@ import java.util.List;
 
 import org.springframework.data.jpa.domain.Specification;
 
-import br.audora.log.domain.Category;
-import br.audora.log.domain.Client;
 import br.audora.log.domain.Log;
 import br.audora.log.domain.Log_;
-import br.audora.log.domain.Product;
+import br.audora.log.domain.enumerations.Category;
+import br.audora.log.domain.enumerations.Client;
+import br.audora.log.domain.enumerations.Product;
 
 public class LogSpecificationBuilder {
 
@@ -27,35 +27,35 @@ public class LogSpecificationBuilder {
 
 	public LogSpecificationBuilder byProduct(String product) {
 		if (isProductValid(product) && Product.isValid(product)) {
-			conditions.add(like(Log_.produto, product));
+			conditions.add(like(Log_.product, product));
 		}
 		return this;
 	}
 
 	public LogSpecificationBuilder byClient(String client) {
 		if (isClientValid(client) && Client.isValid(client)) {
-			conditions.add(like(Log_.cliente, client));
+			conditions.add(like(Log_.client, client));
 		}
 		return this;
 	}
 
 	public LogSpecificationBuilder byCategory(String category) {
 		if (isCategoryValid(category) && Category.isValid(category)) {
-			conditions.add(like(Log_.categoria, category));
+			conditions.add(like(Log_.category, category));
 		}
 		return this;
 	}
 
 	public LogSpecificationBuilder byStartDate(String startDate) {
 		if (isDateValid(startDate)) {
-			conditions.add(greaterThanOrEqualTo(Log_.dataHora, convert(startDate)));
+			conditions.add(greaterThanOrEqualTo(Log_.dateHour, convert(startDate)));
 		}
 		return this;
 	}
 
 	public LogSpecificationBuilder byFinalDate(String finalDate) {
 		if (isDateValid(finalDate)) {
-			conditions.add(lessThanOrEqualTo(Log_.dataHora, convert(finalDate)));
+			conditions.add(lessThanOrEqualTo(Log_.dateHour, convert(finalDate)));
 		}
 		return this;
 	}

@@ -17,8 +17,8 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import br.audora.log.domain.Category;
 import br.audora.log.domain.Log;
+import br.audora.log.domain.enumerations.Category;
 import br.audora.log.repository.LogRepository;
 import br.audora.log.service.LogService;
 
@@ -43,7 +43,7 @@ public class LogServiceTest {
 	@Before
 	public void setUp() {
 		Log log = new Log();
-		log.setCategoria(Category.AUTENTICACAO.getDescription());
+		log.setCategory(Category.AUTENTICACAO.getDescription());
 
 		Map<String, String> params = new HashMap<>();
 		params.put("categoria", Category.AUTENTICACAO.getDescription());
@@ -58,6 +58,6 @@ public class LogServiceTest {
 		params.put("categoria", autenticacao);
 
 		List<Log> founds = logService.findAll(params);
-		assertEquals(autenticacao, founds.get(0).getCategoria());
+		assertEquals(autenticacao, founds.get(0).getCategory());
 	}
 }
