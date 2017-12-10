@@ -8,9 +8,9 @@ import static br.audora.log.util.Constants.Mensagem.*;
 
 public enum Category {
 
-	ERRO("erro"), PERMISSAO("permissão"), AUTENTICACAO("autenticação");
+	ERRO("Erro"), PERMISSAO("Permissão"), AUTENTICACAO("Autenticação");
 
-	String description;
+	private String description;
 
 	Category(String description) {
 		this.description = description;
@@ -21,7 +21,7 @@ public enum Category {
 
 		for (Category category : values()) {
 			descriptions.add(category.getDescription());
-			if (category.description.toLowerCase().contains(description.toLowerCase())) {
+			if (category.getDescription().toLowerCase().contains(description.toLowerCase())) {
 				return true;
 			}
 		}

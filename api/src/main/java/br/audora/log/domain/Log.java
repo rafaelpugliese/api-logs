@@ -2,7 +2,7 @@ package br.audora.log.domain;
 
 
 import static br.audora.log.util.Constants.TIME_ZONE;
-import static br.audora.log.util.Converter.FORMAT_DATE;
+import static br.audora.log.util.Converter.DATE_FORMAT;
 
 import java.util.Date;
 import java.util.Map;
@@ -37,7 +37,7 @@ public class Log {
 	private String client;
 
 	// time zone deve ser o mesmo do banco de dados
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = FORMAT_DATE, timezone = TIME_ZONE)
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT, timezone = TIME_ZONE)
 	@Column(name = "dataHora")
 	@JsonProperty("dataHora")
 	private Date dateHour;

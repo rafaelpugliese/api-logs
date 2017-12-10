@@ -37,7 +37,7 @@ public enum Client {
 	SERGIPE("Sergipe"), 
 	TOCANTINS("Tocantins");
 
-	String description;
+	private String description;
 
 	Client(String description) {
 		this.description = description;
@@ -48,7 +48,7 @@ public enum Client {
 
 		for (Client client : values()) {
 			descriptions.add(client.getDescription());
-			if (client.description.toLowerCase().contains(description.toLowerCase())) {
+			if (client.getDescription().toLowerCase().contains(description.toLowerCase())) {
 				return true;
 			}
 		}

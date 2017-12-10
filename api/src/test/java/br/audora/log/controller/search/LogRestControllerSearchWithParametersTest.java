@@ -1,6 +1,6 @@
 package br.audora.log.controller.search;
 
-import static br.audora.log.util.Converter.FORMAT_DATE;
+import static br.audora.log.util.Converter.DATE_FORMAT;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -59,7 +59,7 @@ public class LogRestControllerSearchWithParametersTest extends SuiteControllerTe
 	
 	@Test
 	public void testSearchWithDateHour() throws Exception {
-		DateFormat df = new SimpleDateFormat(FORMAT_DATE);
+		DateFormat df = new SimpleDateFormat(DATE_FORMAT);
 		String dateInString = df.format(date);
 		
 		mvc.perform(get("/log/search")

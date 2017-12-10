@@ -9,9 +9,9 @@ import br.audora.log.exception.ParametersException;
 
 public enum Product {
 
-	DEFENSORIA("DEFENSORIA"), OAB("OAB");
+	DEFENSORIA("Defensoria"), OAB("OAB");
 
-	String description;
+	private String description;
 
 	Product(String description) {
 		this.description = description;
@@ -22,7 +22,7 @@ public enum Product {
 
 		for (Product product : values()) {
 			descriptions.add(product.getDescription());
-			if (product.description.toLowerCase().contains(description.toLowerCase())) {
+			if (product.getDescription().toLowerCase().contains(description.toLowerCase())) {
 				return true;
 			}
 		}

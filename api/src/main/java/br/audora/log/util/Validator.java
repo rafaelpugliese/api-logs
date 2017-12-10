@@ -4,23 +4,24 @@ import static br.audora.log.util.Converter.convert;
 
 public class Validator {
 
+	private static boolean isNull(Object object) {
+		return object == null;
+	}
+
 	public static boolean isProductValid(String value) {
-		return value != null;
+		return !isNull(value);
 	}
 
 	public static boolean isCategoryValid(String value) {
-		return value != null;
+		return !isNull(value);
 	}
 
 	public static boolean isClientValid(String value) {
-		return value != null;
+		return !isNull(value);
 	}
 
 	public static boolean isDateValid(String value) {
-		return value != null && validateDateFormat(value);
+		return !isNull(value) && !isNull(convert(value));
 	}
 
-	public static boolean validateDateFormat(String dateToValdate) {
-		return convert(dateToValdate) != null;
-	}
 }

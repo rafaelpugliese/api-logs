@@ -13,7 +13,7 @@ public interface Constants {
 		String VALUE_PRODUCT_NOT_FOUND = "Possíveis valores para produto: ";
 		String VALUE_CLIENT_NOT_FOUND = "Possíveis valores para cliente: ";
 		
-		String FORMAT_DATE_WRORNG = "Data está com o formato inválido, formato esperado: ";
+		String WRONG_DATE_FORMAT = "Data está com o formato inválido, formato esperado: ";
 	}
 
 }
