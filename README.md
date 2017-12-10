@@ -4,15 +4,15 @@
 Após baixar o projeto, realizar o importe no eclipse pela opção do maven.
 
 ## Banco de dados
-O projeto está configurado (```application.properties```) para executar com o banco postgres. No caso de execução do projeto utilizando um banco postgres, basta criar a base ```api_logs``` e configurar (```application.properties```) o usuário (atualmente está configurado com usuário ```postgres``` e senha ```postgres``` ). Na utilização de outro banco, deve-se alterar as configuraçãoes em ```application.properties```.
+O projeto está configurado (```application.properties```) para executar com o banco PostgreSQL. No caso de execução do projeto utilizando um banco PostgreSQL, basta criar a base ```api_logs``` e configurar (```application.properties```) o usuário (atualmente está configurado com login ```postgres``` e senha ```postgres``` ). Na utilização de outro banco, deve-se alterar as configuraçãoes em ```application.properties```.
 
 # Como executar
 
 ## IDE - Eclipse
- Após o projeto aberto no eclipse, executar a classe ```br.audora.log.Application``` através do ```Java Application```.
+ Após o projeto aberto no Eclipse, executar a classe ```br.audora.log.Application``` através do ```Java Application```.
 
 # Execução
-A API utiliza autenticação via token jwt. Para acessar os recursos, é necessáo realizar autenticação através do serviço POST de login (http://localhost:8080/login), basta seguir os passos descritos em ```Executando a autenticação``` em [Autenticação com JWT no Spring Boot](http://andreybleme.com/2017-04-01/autenticacao-com-jwt-no-spring-boot/). Nesta API, está configurado (```application.properties```) o usuário ```audora``` e a senha ```audora```.
+A API utiliza autenticação via token jwt. Para acessar os recursos, é necessário gerar um token através do serviço de Login (http://localhost:8080/login) utilizando o método POST - ver  ```Executando a autenticação``` em [Autenticação com JWT no Spring Boot](http://andreybleme.com/2017-04-01/autenticacao-com-jwt-no-spring-boot/). Nesta API, está configurado (```application.properties```) o usuário ```audora``` e a senha ```audora```.
 
 Após realizada a autenticação, o token de retorno deve ser utilizado nas demais requisições conforme ```Executando a autenticação``` em [Autenticação com JWT no Spring Boot](http://andreybleme.com/2017-04-01/autenticacao-com-jwt-no-spring-boot/).
 
