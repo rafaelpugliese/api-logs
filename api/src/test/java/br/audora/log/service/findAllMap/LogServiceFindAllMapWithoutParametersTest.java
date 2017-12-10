@@ -1,6 +1,6 @@
-package br.audora.log.service;
+package br.audora.log.service.findAllMap;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -18,15 +18,14 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import br.audora.log.domain.Log;
-import br.audora.log.domain.enumerations.Category;
 import br.audora.log.repository.LogRepository;
 import br.audora.log.service.LogService;
 
 @RunWith(SpringRunner.class)
-public class LogServiceTest {
+public class LogServiceFindAllMapWithoutParametersTest {
 
 	@TestConfiguration
-	static class EmployeeServiceImplTestContextConfiguration {
+	static class LogServiceImplTestContextConfiguration {
 
 		@Bean
 		public LogService logService() {
@@ -35,29 +34,40 @@ public class LogServiceTest {
 	}
 
 	@Autowired
-	private LogService logService;
+	protected LogService logService;
 
 	@MockBean
-	private LogRepository logRepository;
+	protected LogRepository logRepository;
+
+	protected Log log = new Log();
+
+	protected Map<String, String> params = new HashMap<>();
 
 	@Before
 	public void setUp() {
-		Log log = new Log();
-		log.setCategory(Category.AUTENTICACAO.getDescription());
 
-		Map<String, String> params = new HashMap<>();
-		params.put("categoria", Category.AUTENTICACAO.getDescription());
+		params.put("categoria", log.getCategory());
+		params.put("produto", log.getProduct());
+		params.put("cliente", log.getClient());
 
 		Mockito.when(logRepository.findAll(params)).thenReturn(Arrays.asList(log));
 	}
 
 	@Test
-	public void testSearchByCategoria() {
-		String autenticacao = Category.AUTENTICACAO.getDescription();
-		Map<String, String> params = new HashMap<>();
-		params.put("categoria", autenticacao);
-
+	public void testfindAllMapWithouCategory() {
 		List<Log> founds = logService.findAll(params);
-		assertEquals(autenticacao, founds.get(0).getCategory());
+		assertNull(founds.get(0).getCategory());
+	}
+
+	@Test
+	public void testfindAllMapWithouClient() {
+		List<Log> founds = logService.findAll(params);
+		assertNull(founds.get(0).getClient());
+	}
+
+	@Test
+	public void testfindAllMapWithouProduct() {
+		List<Log> founds = logService.findAll(params);
+		assertNull(founds.get(0).getProduct());
 	}
 }

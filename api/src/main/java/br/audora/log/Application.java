@@ -1,6 +1,6 @@
 package br.audora.log;
 
-import static br.audora.log.util.Constants.TIME_ZONE_AMERICA_MACEIO;
+import static br.audora.log.util.Constants.TIME_ZONE;
 
 import java.util.TimeZone;
 
@@ -17,9 +17,13 @@ public class Application extends WebMvcConfigurerAdapter {
 		SpringApplication.run(Application.class, args);
 	}
 
+	/*
+	 * Para que as operações com data sejam realizadas perfeitamente, o valor da contante deve ser igual ao timezone do banco de dados.
+	 * Caso seja necessário alterar, deve-se alterar na constante, assim, em todos os locais necessários serão alterados
+	 */
 	@PostConstruct
 	void started() {
-		TimeZone.setDefault(TimeZone.getTimeZone(TIME_ZONE_AMERICA_MACEIO)); 	// Time zone deve ser o mesmo do banco de dados.
+		TimeZone.setDefault(TimeZone.getTimeZone(TIME_ZONE)); 	// Time zone deve ser o mesmo do banco de dados.
 	}
 
 }

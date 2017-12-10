@@ -3,6 +3,9 @@ package br.audora.log.util;
 public interface Constants {
 
 	String TIME_ZONE_AMERICA_MACEIO = "America/Maceio";
+	String TIME_ZONE_AMERICA_SAO_PAULO = "America/Sao_Paulo";
+	
+	String TIME_ZONE = TIME_ZONE_AMERICA_MACEIO;
 
 	public interface Mensagem {
 		

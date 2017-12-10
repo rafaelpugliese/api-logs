@@ -29,7 +29,7 @@ public class LogRepositoryImpl extends SimpleJpaRepository<Log, Long> implements
 				.byStartDate(params.get("dataInicial"))
 				.byFinalDate(params.get("dataFinal"))
 				.build();
-
+		
 		return findAll(where);
 	}
 
