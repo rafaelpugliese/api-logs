@@ -1,12 +1,5 @@
 package br.audora.log.controller;
 
-import static org.mockito.BDDMockito.given;
-
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
@@ -27,6 +20,8 @@ import br.audora.log.service.LogService;
 })
 @WithMockUser(username = "audora", password = "audora", roles = "USER")
 public class SuiteControllerTest {
+	
+	protected static final String LOG_SEARCH = "/log/search?";
 
 	@Autowired
 	protected MockMvc mvc;
@@ -39,11 +34,6 @@ public class SuiteControllerTest {
 	@Before
 	public void setUp() {
 		log = new Log();
-
-		List<Log> allLogs = Arrays.asList(log);
-		Map<String, String> params = new HashMap<>();
-
-		given(logService.findAll(params)).willReturn(allLogs);
 	}
 	
 }

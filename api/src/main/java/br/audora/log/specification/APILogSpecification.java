@@ -1,5 +1,6 @@
 package br.audora.log.specification;
 
+import static br.audora.log.util.Validator.isNull;
 import static org.springframework.data.jpa.domain.Specifications.where;
 
 import java.util.Date;
@@ -44,7 +45,7 @@ public class APILogSpecification {
 	}
 
 	public static Specification<Log> addCondition(Specification<Log> where, Specification<Log> novaClausula) {
-		return where == null ? where(novaClausula) : where(where).and(novaClausula);
+		return isNull(where) ? where(novaClausula) : where(where).and(novaClausula);
 	}
 
 }

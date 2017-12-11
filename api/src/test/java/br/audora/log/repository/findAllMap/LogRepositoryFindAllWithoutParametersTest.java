@@ -33,18 +33,8 @@ public class LogRepositoryFindAllWithoutParametersTest {
 
 	@Before
 	public void setUp() {
-
-		log.setCategory(null);
-		log.setProduct(null);
-		log.setClient(null);
-		log.setDateHour(null);
-
 		log = entityManager.persist(log);
 		entityManager.flush();
-
-		params.put("categoria", null);
-		params.put("produto", null);
-		params.put("cliente", null);
 	}
 
 	@Test

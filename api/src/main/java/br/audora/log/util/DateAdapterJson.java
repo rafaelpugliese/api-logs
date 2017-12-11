@@ -1,5 +1,7 @@
 package br.audora.log.util;
 
+import static br.audora.log.util.Validator.isNull;
+
 import java.lang.reflect.Type;
 import java.util.Date;
 
@@ -14,7 +16,7 @@ public class DateAdapterJson implements JsonDeserializer<Date>, JsonSerializer<D
 	
 	@Override
 	public Date deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) {
-		return json == null ? null : new Date(json.getAsLong());
+		return isNull(json) ? null : new Date(json.getAsLong());
 	}
 
 	@Override

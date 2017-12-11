@@ -5,7 +5,8 @@ import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({ 
-	ValidatorTest.class
+	ValidatorTest.class,
+	StringUtilsTest.class
 })
 public class SuiteUtilTest {
 	

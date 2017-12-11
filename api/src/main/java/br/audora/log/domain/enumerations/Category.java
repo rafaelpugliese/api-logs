@@ -1,10 +1,12 @@
 package br.audora.log.domain.enumerations;
 
+import static br.audora.log.util.Constants.Mensagem.VALUE_CATEGORY_NOT_FOUND;
+import static br.audora.log.util.StringUtils.contains;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import br.audora.log.exception.ParametersException;
-import static br.audora.log.util.Constants.Mensagem.*;
 
 public enum Category {
 
@@ -21,7 +23,7 @@ public enum Category {
 
 		for (Category category : values()) {
 			descriptions.add(category.getDescription());
-			if (category.getDescription().toLowerCase().contains(description.toLowerCase())) {
+			if (contains(category.getDescription(), description)) {
 				return true;
 			}
 		}

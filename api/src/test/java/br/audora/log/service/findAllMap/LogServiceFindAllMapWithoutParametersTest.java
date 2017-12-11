@@ -45,11 +45,6 @@ public class LogServiceFindAllMapWithoutParametersTest {
 
 	@Before
 	public void setUp() {
-
-		params.put("categoria", log.getCategory());
-		params.put("produto", log.getProduct());
-		params.put("cliente", log.getClient());
-
 		Mockito.when(logRepository.findAll(params)).thenReturn(Arrays.asList(log));
 	}
 

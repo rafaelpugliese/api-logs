@@ -4,7 +4,7 @@ import static br.audora.log.util.Converter.convert;
 
 public class Validator {
 
-	private static boolean isNull(Object object) {
+	public static boolean isNull(Object object) {
 		return object == null;
 	}
 

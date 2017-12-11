@@ -1,6 +1,7 @@
 package br.audora.log.domain.enumerations;
 
 import static br.audora.log.util.Constants.Mensagem.VALUE_PRODUCT_NOT_FOUND;
+import static br.audora.log.util.StringUtils.contains;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +23,7 @@ public enum Product {
 
 		for (Product product : values()) {
 			descriptions.add(product.getDescription());
-			if (product.getDescription().toLowerCase().contains(description.toLowerCase())) {
+			if (contains(product.getDescription(), description)) {
 				return true;
 			}
 		}

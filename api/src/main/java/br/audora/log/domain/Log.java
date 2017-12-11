@@ -46,10 +46,10 @@ public class Log {
 	@JsonProperty("categoria")
 	private String category;
 
-	@Column(name = "registros")
-	@JsonProperty("registros")
+	@Column(name = "registro")
+	@JsonProperty("registro")
 	@Convert(converter = RegistroConverter.class)
-	private Map<String, Object> registros;
+	private Map<String, Object> registro;
 
 	public Long getId() {
 		return id;
@@ -91,12 +91,12 @@ public class Log {
 		this.category = category;
 	}
 
-	public Map<String, Object> getRegistros() {
-		return registros;
+	public Map<String, Object> getRegistro() {
+		return registro;
 	}
 
-	public void setRegistros(Map<String, Object> registros) {
-		this.registros = registros;
+	public void setRegistro(Map<String, Object> registro) {
+		this.registro = registro;
 	}
 
 	@Override

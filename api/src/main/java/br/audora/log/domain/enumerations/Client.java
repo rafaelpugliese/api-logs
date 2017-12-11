@@ -1,6 +1,7 @@
 package br.audora.log.domain.enumerations;
 
 import static br.audora.log.util.Constants.Mensagem.VALUE_CLIENT_NOT_FOUND;
+import static br.audora.log.util.StringUtils.contains;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,12 +49,15 @@ public enum Client {
 
 		for (Client client : values()) {
 			descriptions.add(client.getDescription());
-			if (client.getDescription().toLowerCase().contains(description.toLowerCase())) {
+			if (contains(client.getDescription(), description)) {
 				return true;
 			}
 		}
 		throw new ParametersException(VALUE_CLIENT_NOT_FOUND + descriptions.toString());
 	}
+	
+	// TODO
+	
 
 	public String getDescription() {
 		return description;

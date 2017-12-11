@@ -6,6 +6,7 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({ 
 	CategoryTest.class,
+	ClientTest.class,
 	ProductTest.class
 })
 public class SuiteDomainTest {
