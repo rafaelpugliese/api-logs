@@ -11,9 +11,10 @@ API utilizada para registrar logs de uma aplicação web. Com esta API é possí
 - JSON;
 - JWT;
 - JUnit;
+- Java 1.8;
 
 ## Informações adicionais
-- Existem mais de 20 testes implementados, para executar todos os testes, basta executar, com a utilização do JUnit, a classe `br.audora.log.SuiteApplicationTest` existente no pacote de testes. Os testes podem ser executados unitariamente ou por pequenos conjuntos. Como exemplo de execução de um conjunto de testes, pode-se executar a classe `br.audora.log.controller.SuiteControllerTest`, serão executados apenas os testes relacionados com as classes *Controllers* existentes da API.
+- Existem 70 testes automatizados implementados, para executar todos os testes, basta executar, com a utilização do JUnit, a classe `br.audora.log.SuiteApplicationTest` existente no pacote de testes. Os testes podem ser executados unitariamente ou por pequenos conjuntos. Como exemplo de execução de um conjunto de testes, pode-se executar a classe `br.audora.log.controller.SuiteControllerTest`, serão executados apenas os testes relacionados com as classes *Controllers* existentes da API.
 
 # Configuração de execução
 
@@ -37,18 +38,18 @@ Após realizada a autenticação, o token de retorno deve ser utilizado nas dema
 
 ### Requisição
 
-| Campo | valor |
+| Campo | Valor |
 | ------------- | ------------- |
 | Link | http://localhost:8080/logs |
 | Método | POST |
 | Header | Content-Type: application/json <br> Authorization: token\** |
-| Body* | { "produto":"OAB", "cliente":"Alagoas", "categoria":"permissão", "dataHora":"2017-12-16 08:40:10", "registros": { "usuario": {"nome": "José da silva", "idade": 55}, "descricao":"Descrição do usuário"}} |
+| Body* | **Exemplos:** <br> <br> { "produto":"OAB", "cliente":"Alagoas", "categoria":"permissão", "dataHora":"2017-12-16 08:40:10", "registro": { "usuario": {"nome": "José da silva", "idade": 55}, "descricao":"Descrição do usuário"}} <br> <br> { "produto": "OAB",	"cliente": "Alagoas", "categoria": "permissão", "dataHora": "2017-12-16 08:40:10", "registro": { "descricao": "Descrição do usuário" } } <br> <br> { "produto":"OAB", "cliente":"Alagoas", "categoria":"permissão", "dataHora":"2017-12-16 08:40:10", "registro": { "empresa": {"nome": "Audora", "idade": 40, "descricao":"Descrição da empresa"}}}|
 
-\* Dados enviados pelo campo **raw**. O formato do JSON recebido por **registro** é genérico, portanto, qualquer JSON pode ser enviado neste campo, desde um único campo, até "objetos" em formato JSON.
+\* Dados enviados pelo campo **raw**. O formato do JSON recebido por **registro** é genérico, portanto, qualquer JSON pode ser enviado neste campo, desde um único campo, até um "objeto" em formato JSON.
 
 \** Exemplo de valor para o token: **Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhdWRvcmEiLCJleHAiOjE1MTM2Nzg5NjR9.UGmbKijIkpeRMU03q4gh9lB6pqSFbvDMbUuAEi3HZuNNojYGZz-Q0Hw83ndR_1tLtV8GNwpXvtTYo8rAO5zzDQ**
 
-### Resposta
+### Resposta para o primeiro JSON enviado pelo Body
 
 ```json
 {
@@ -56,7 +57,7 @@ Após realizada a autenticação, o token de retorno deve ser utilizado nas dema
     "cliente": "Alagoas",
     "dataHora": "2017-12-16 08:40:10",
     "categoria": "permissão",
-    "registros": {
+    "registro": {
         "usuario": {
             "nome": "José da silva",
             "idade": 55
@@ -65,10 +66,10 @@ Após realizada a autenticação, o token de retorno deve ser utilizado nas dema
     },
     "_links": {
         "self": {
-            "href": "http://localhost:8080/logs/1"
+            "href": "http://localhost:8080/logs/7"
         },
         "log": {
-            "href": "http://localhost:8080/logs/1"
+            "href": "http://localhost:8080/logs/7"
         }
     }
 }
@@ -78,41 +79,55 @@ Após realizada a autenticação, o token de retorno deve ser utilizado nas dema
 
 ### Requisição
 
-| Campo | valor |
+| Campo | Valor |
 |---------|---------|
-| Link*** | http://localhost:8080/log/search?produto=OBA&cliente=Alagoas&categoria=permissão&dataInicial=2017-12-16%2005:20:10&dataFinal=2017-12-16%2009:30:10|
+| Link*** | http://localhost:8080/log/search?produto=OAB&cliente=Alagoas&categoria=permissão&dataInicial=2017-12-16%2005:20:10&dataFinal=2017-12-16%2009:30:10|
 | Método | GET |
 | Header | Content-Type: application/json <br> Authorization: token |
 
 \*** Todos os parâmetros/filtros são opcionais
 
-### Resposta
+### Exemplo de resposta retornado
 
 ```json
 [
     {
-        "id": 1,
+        "id": 4,
         "produto": "OAB",
         "cliente": "Alagoas",
         "dataHora": "2017-12-16 08:40:10",
         "categoria": "permissão",
-        "registros": {
+        "registro": {
             "usuario": {
                 "nome": "José da silva",
                 "idade": 55
             },
             "descricao": "Descrição do usuário"
         }
+    },
+    {
+        "id": 5,
+        "produto": "OAB",
+        "cliente": "Alagoas",
+        "dataHora": "2017-12-16 08:40:10",
+        "categoria": "permissão",
+        "registro": {
+            "empresa": {
+                "nome": "Audora",
+                "idade": 40,
+                "descricao": "Descrição da empresa"
+            }
+        }
+    },
+    {
+        "id": 3,
+        "produto": "OAB",
+        "cliente": "Alagoas",
+        "dataHora": "2017-12-16 08:40:10",
+        "categoria": "permissão",
+        "registro": {
+            "descricao": "Descrição do usuário"
+        }
     }
 ]
 ```
-
-<!--
-     ## Outros recursos
-
-| Campo | valor |
-| ------------- | ------------- |
-| Link | http://localhost:8080/logs/{id} |
-| Método | DELETE |
-| Header | Content-Type: application/json <br> Authorization: token |
--->
