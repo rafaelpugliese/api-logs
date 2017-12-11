@@ -3,11 +3,12 @@ API utilizada para registrar logs de uma aplicação web. Com esta API é possí
 
 ## Tecnologias utilizadas
 
-- Spring boot;
+- Spring Boot;
 - Spring Data;
+- Spring Security;
+- Spring Teste;
 - Maven;
 - PostgreSQL;
-- Spring Security;
 - JSON;
 - JWT;
 - JUnit;
